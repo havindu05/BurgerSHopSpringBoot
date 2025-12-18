@@ -3,9 +3,11 @@ package edu.icet.service;
 import edu.icet.model.entity.Customer;
 import edu.icet.repository.CustomerRepositroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerService {
 
     @Autowired
