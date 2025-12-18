@@ -9,5 +9,5 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auot: update
+      ddl-auto: update
     show-sql: true
