@@ -10,6 +10,12 @@ body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
     padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .container {
@@ -19,6 +25,18 @@ body {
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
@@ -29,6 +47,12 @@ h1 {
     margin: 0;
     font-size: 2.5rem;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    to { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
 }
 
 h2 {
@@ -37,6 +61,19 @@ h2 {
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 1.8rem;
+    position: relative;
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Form Section */
@@ -44,6 +81,18 @@ h2 {
     padding: 30px;
     background: #f8f9fa;
     border-bottom: 1px solid #eee;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 input {
@@ -53,14 +102,14 @@ input {
     border: 2px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 input:focus {
     outline: none;
     border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    transform: scale(1.02);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    transform: scale(1.03);
 }
 
 button {
@@ -72,13 +121,30 @@ button {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
 }
 
 button:active {
@@ -88,15 +154,23 @@ button:active {
 /* List Section */
 .list-section {
     padding: 30px;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .list-section button {
     background: #28a745;
-    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
 }
 
 .list-section button:hover {
     background: #218838;
+    animation: none;
 }
 
 /* Table Styles */
@@ -128,12 +202,33 @@ th {
 }
 
 tbody tr {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    animation: fadeInRow 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+tbody tr:nth-child(4) { animation-delay: 0.4s; }
+tbody tr:nth-child(5) { animation-delay: 0.5s; }
+/* Add more if needed */
+
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 tbody tr:hover {
     background: #f1f3ff;
-    transform: scale(1.01);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 tbody tr:nth-child(even) {
@@ -144,19 +239,66 @@ tbody button {
     background: #dc3545;
     padding: 8px 16px;
     font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 tbody button:hover {
     background: #c82333;
+    transform: scale(1.1);
 }
 
 /* Error Messages */
 #errorMessages {
     background: #f8d7da;
     color: #721c24;
-    padding: 12px;
+    padding: 15px;
     border-radius: 8px;
     border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+/* Navigation Bar */
+.navbar {
+    background: #343a40;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    margin: 0 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background: #495057;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.navbar a.active {
+    background: #007bff;
+    box-shadow: 0 0 20px rgba(0,123,255,0.6);
+    animation: activePulse 1.5s infinite;
+}
+
+@keyframes activePulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0,123,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,123,255,0); }
 }
 
 /* Responsive */
@@ -181,5 +323,11 @@ tbody button:hover {
 
     th, td {
         padding: 12px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+        padding: 15px;
     }
 }
