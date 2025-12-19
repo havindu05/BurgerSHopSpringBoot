@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">🏠 Customers</a>
+        <a href="/items.html" class="active">🛍️ Items</a>
+        <a href="/orders.html" style="opacity: 0.5;">📋 Place Order (Coming Soon)</a>
+    </div>
+
+    <h1>Item Management System 🛍️</h1>
+
+    <div class="form-section">
+        <h2>Add / Update Item</h2>
+        <div id="errorMessages" style="color: red; margin-bottom: 10px; font-weight: bold;"></div>
+
+        <input type="text" id="code" placeholder="Code (e.g. I001)" required>
+        <input type="text" id="name" placeholder="Item Name" required>
+        <input type="text" id="category" placeholder="Category">
+        <input type="number" id="unitPrice" placeholder="Unit Price" step="0.01">
+        <input type="number" id="qtyOnHand" placeholder="Quantity On Hand">
+        <button onclick="saveItem()">Save Item</button>
+    </div>
+
+    <div class="list-section">
+        <h2>All Items</h2>
+        <button onclick="loadItems()">Refresh List</button>
+        <table>
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Unit Price (Rs.)</th>
+                <th>Qty</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="itemBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="item.js"></script>
+</body>
+</html>

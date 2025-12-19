@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/" class="active">🏠 Customers</a>
+        <a href="/item.html">🛍️ Items</a>
+        <a href="/order.html" style="opacity: 0.5;">📋 Place Order (Coming Soon)</a>
+    </div>
+
+    <h1>Customer Management System 🚀</h1>
+
+    <div class="form-section">
+        <h2>Add New Customer</h2>
+        <input type="text" id="id" placeholder="ID (e.g. C001)" required>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="nic" placeholder="NIC">
+        <input type="text" id="address" placeholder="Address">
+        <button onclick="saveCustomer()">Save Customer</button>
+    </div>
+
+    <div class="list-section">
+        <h2>All Customers</h2>
+        <button onclick="loadCustomers()">Refresh List</button>
+        <table id="customerTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>NIC</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="customerBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="customer.js"></script>
+</body>
+</html>
