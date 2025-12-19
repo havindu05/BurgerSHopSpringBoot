@@ -1,19 +1,25 @@
 package edu.icet.service;
 
 import edu.icet.model.entity.Item;
+import edu.icet.repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class ItemService {
 
+    @Autowired
+    ItemRepository itemRepository;
+
     public Item save(Item item) {
-        return null;
+        return itemRepository.save(item);
     }
 
     public List<Item> getItems() {
-        return null;
+       return itemRepository.findAll();
     }
 
     public void delete(String code) {
+        itemRepository.deleteById(code);
     }
 }

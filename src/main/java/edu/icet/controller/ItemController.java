@@ -25,7 +25,7 @@ public class ItemController {
         return itemService.getItems();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{code}")
     public void delete(@PathVariable String code){
         itemService.delete(code);
     }
